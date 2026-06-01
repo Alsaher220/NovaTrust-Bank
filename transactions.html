@@ -3,215 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NovaTrust Private Banking - Transactions</title>
-
 <link rel="stylesheet" href="css/style.css">
-
 <style>
 .statement-header{
-background:#151515;
-padding:25px;
-border-radius:18px;
-border:1px solid #242424;
-margin-bottom:25px;
+  background:#151515;
+  padding:25px;
+  border-radius:18px;
+  border:1px solid #242424;
+  margin-bottom:25px;
 }
-
-.statement-header h2{
-color:#d4af37;
-margin-bottom:10px;
-}
-
+.statement-header h2{color:#d4af37;margin-bottom:10px;}
 .balance-pill{
-display:inline-block;
-padding:10px 18px;
-background:#0f0f0f;
-border:1px solid #242424;
-border-radius:12px;
-margin-top:10px;
+  display:inline-block;
+  padding:10px 18px;
+  background:#0f0f0f;
+  border:1px solid #242424;
+  border-radius:12px;
+  margin-top:10px;
 }
 </style>
-
 </head>
-
 <body>
 
 <div class="sidebar">
-
-<div class="logo">
-NovaTrust <span>Private</span>
-</div>
-
-<ul>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="accounts.html">Accounts</a></li>
-<li><a href="transactions.html">Transactions</a></li>
-<li><a href="transfer.html">Transfer Funds</a></li>
-<li><a href="cards.html">Premium Cards</a></li>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="index.html">Logout</a></li>
-</ul>
-
+  <div class="logo">
+    <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;">
+      <rect width="64" height="64" rx="14" fill="#1a1a1a"/>
+      <path d="M32 10 L52 20 L52 24 L44 24 L44 48 L38 48 L38 24 L26 24 L26 48 L20 48 L20 24 L12 24 L12 20 Z" fill="#d4af37"/>
+      <rect x="12" y="48" width="40" height="4" rx="2" fill="#d4af37"/>
+    </svg>
+    NovaTrust <span>Private</span>
+  </div>
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="accounts.html">Accounts</a></li>
+    <li><a href="transactions.html">Transactions</a></li>
+    <li><a href="transfer.html">Transfer Funds</a></li>
+    <li><a href="cards.html">Premium Cards</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="index.html">Logout</a></li>
+  </ul>
 </div>
 
 <div class="main">
 
-<div class="header">
+  <div class="header">
+    <div>
+      <h1>Transaction History</h1>
+      <p>January 2026 - May 2026</p>
+    </div>
+    <div class="user-box">Vanessa Morgan</div>
+  </div>
 
-<div>
-<h1>Transaction History</h1>
-<p>January 2026 - May 2026</p>
-</div>
+  <div class="statement-header">
+    <h2>Checking Account Statement</h2>
+    <p>Account Ending: **** 7845</p>
+    <div class="balance-pill">
+      Current Available Balance:
+      <strong style="color:#d4af37;">$500,000.00</strong>
+    </div>
+  </div>
 
-<div class="user-box">
-Vanessa Morgan
-</div>
+  <div class="search">
+    <input type="text" placeholder="Search transactions..." id="searchInput">
+  </div>
 
-</div>
+  <div class="table-container">
+    <table id="transactionTable">
+      <thead>
+        <tr><th>Date</th><th>Description</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>May 30</td><td>Direct Deposit - Horizon Consulting</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>May 29</td><td>Grocery Market</td><td class="debit">-$97.42</td></tr>
+        <tr><td>May 28</td><td>Fuel Purchase</td><td class="debit">-$46.18</td></tr>
+        <tr><td>May 27</td><td>Amazon Marketplace</td><td class="debit">-$83.77</td></tr>
+        <tr><td>May 25</td><td>Transfer To Savings</td><td class="debit">-$400.00</td></tr>
+        <tr><td>May 24</td><td>Restaurant Payment</td><td class="debit">-$58.21</td></tr>
+        <tr><td>May 22</td><td>Pharmacy Purchase</td><td class="debit">-$22.60</td></tr>
+        <tr><td>May 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
+        <tr><td>May 16</td><td>Utility Payment</td><td class="debit">-$141.37</td></tr>
+        <tr><td>May 14</td><td>Grocery Market</td><td class="debit">-$133.22</td></tr>
+        <tr><td>May 12</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
+        <tr><td>May 10</td><td>Insurance Premium</td><td class="debit">-$128.44</td></tr>
+        <tr><td>May 08</td><td>Streaming Subscription</td><td class="debit">-$15.99</td></tr>
+        <tr><td>May 07</td><td>Transfer From Savings</td><td class="credit">+$250.00</td></tr>
+        <tr><td>May 05</td><td>Fuel Purchase</td><td class="debit">-$51.63</td></tr>
+        <tr><td>May 03</td><td>Restaurant Payment</td><td class="debit">-$74.29</td></tr>
+        <tr><td>May 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>Apr 29</td><td>Grocery Market</td><td class="debit">-$119.38</td></tr>
+        <tr><td>Apr 27</td><td>Home Goods Store</td><td class="debit">-$88.40</td></tr>
+        <tr><td>Apr 24</td><td>Water Utility</td><td class="debit">-$56.18</td></tr>
+        <tr><td>Apr 22</td><td>Online Shopping</td><td class="debit">-$64.93</td></tr>
+        <tr><td>Apr 20</td><td>Fuel Purchase</td><td class="debit">-$47.88</td></tr>
+        <tr><td>Apr 18</td><td>Restaurant Payment</td><td class="debit">-$62.15</td></tr>
+        <tr><td>Apr 16</td><td>Mobile Deposit</td><td class="credit">+$450.00</td></tr>
+        <tr><td>Apr 15</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
+        <tr><td>Apr 12</td><td>Grocery Market</td><td class="debit">-$141.20</td></tr>
+        <tr><td>Apr 10</td><td>ATM Withdrawal</td><td class="debit">-$120.00</td></tr>
+        <tr><td>Apr 08</td><td>Streaming Subscription</td><td class="debit">-$15.99</td></tr>
+        <tr><td>Apr 05</td><td>Electricity Bill</td><td class="debit">-$134.72</td></tr>
+        <tr><td>Apr 03</td><td>Pharmacy Purchase</td><td class="debit">-$31.26</td></tr>
+        <tr><td>Apr 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>Mar 30</td><td>Grocery Market</td><td class="debit">-$108.74</td></tr>
+        <tr><td>Mar 26</td><td>Transfer To Savings</td><td class="debit">-$350.00</td></tr>
+        <tr><td>Mar 24</td><td>Restaurant Payment</td><td class="debit">-$71.30</td></tr>
+        <tr><td>Mar 22</td><td>Amazon Marketplace</td><td class="debit">-$56.77</td></tr>
+        <tr><td>Mar 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
+        <tr><td>Mar 18</td><td>Coffee Shop</td><td class="debit">-$8.15</td></tr>
+        <tr><td>Mar 16</td><td>Utility Payment</td><td class="debit">-$139.82</td></tr>
+        <tr><td>Mar 15</td><td>Tax Refund Deposit</td><td class="credit">+$1,275.43</td></tr>
+        <tr><td>Mar 13</td><td>Grocery Market</td><td class="debit">-$128.44</td></tr>
+        <tr><td>Mar 11</td><td>Insurance Premium</td><td class="debit">-$128.44</td></tr>
+        <tr><td>Mar 05</td><td>ATM Withdrawal</td><td class="debit">-$80.00</td></tr>
+        <tr><td>Mar 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>Feb 27</td><td>Grocery Market</td><td class="debit">-$136.27</td></tr>
+        <tr><td>Feb 25</td><td>Home Improvement Store</td><td class="debit">-$92.10</td></tr>
+        <tr><td>Feb 23</td><td>Water Utility</td><td class="debit">-$54.11</td></tr>
+        <tr><td>Feb 21</td><td>Fuel Purchase</td><td class="debit">-$45.28</td></tr>
+        <tr><td>Feb 20</td><td>Mobile Deposit</td><td class="credit">+$300.00</td></tr>
+        <tr><td>Feb 18</td><td>Restaurant Payment</td><td class="debit">-$52.40</td></tr>
+        <tr><td>Feb 16</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
+        <tr><td>Feb 14</td><td>Gift Shop Purchase</td><td class="debit">-$63.55</td></tr>
+        <tr><td>Feb 10</td><td>Electricity Bill</td><td class="debit">-$142.83</td></tr>
+        <tr><td>Feb 06</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
+        <tr><td>Feb 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>Jan 30</td><td>Grocery Market</td><td class="debit">-$124.19</td></tr>
+        <tr><td>Jan 28</td><td>Fuel Purchase</td><td class="debit">-$48.73</td></tr>
+        <tr><td>Jan 26</td><td>Restaurant Payment</td><td class="debit">-$61.42</td></tr>
+        <tr><td>Jan 24</td><td>Online Retail Purchase</td><td class="debit">-$95.20</td></tr>
+        <tr><td>Jan 22</td><td>Water Utility</td><td class="debit">-$52.88</td></tr>
+        <tr><td>Jan 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
+        <tr><td>Jan 18</td><td>Pharmacy Purchase</td><td class="debit">-$26.10</td></tr>
+        <tr><td>Jan 16</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
+        <tr><td>Jan 14</td><td>Grocery Market</td><td class="debit">-$137.45</td></tr>
+        <tr><td>Jan 10</td><td>Electricity Bill</td><td class="debit">-$145.20</td></tr>
+        <tr><td>Jan 08</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
+        <tr><td>Jan 05</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>Jan 03</td><td>Initial Funding Transfer</td><td class="credit">+$5,000.00</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<div class="statement-header">
-
-<h2>Checking Account Statement</h2>
-
-<p>Account Ending: **** 7845</p>
-
-<div class="balance-pill">
-Current Available Balance:
-<strong style="color:#d4af37;">
-$500,000.00
-</strong>
-</div>
-
-</div>
-
-<div class="search">
-<input type="text"
-placeholder="Search transactions..."
-id="searchInput">
-</div>
-
-<div class="table-container">
-
-<table id="transactionTable">
-
-<thead>
-<tr>
-<th>Date</th>
-<th>Description</th>
-<th>Amount</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr><td>May 30</td><td>Direct Deposit - Horizon Consulting</td><td class="credit">+$2,975.00</td></tr>
-<tr><td>May 29</td><td>Grocery Market</td><td class="debit">-$97.42</td></tr>
-<tr><td>May 28</td><td>Fuel Purchase</td><td class="debit">-$46.18</td></tr>
-<tr><td>May 27</td><td>Amazon Marketplace</td><td class="debit">-$83.77</td></tr>
-<tr><td>May 25</td><td>Transfer To Savings</td><td class="debit">-$400.00</td></tr>
-<tr><td>May 24</td><td>Restaurant Payment</td><td class="debit">-$58.21</td></tr>
-<tr><td>May 22</td><td>Pharmacy Purchase</td><td class="debit">-$22.60</td></tr>
-<tr><td>May 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
-<tr><td>May 16</td><td>Utility Payment</td><td class="debit">-$141.37</td></tr>
-<tr><td>May 14</td><td>Grocery Market</td><td class="debit">-$133.22</td></tr>
-<tr><td>May 12</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
-<tr><td>May 10</td><td>Insurance Premium</td><td class="debit">-$128.44</td></tr>
-<tr><td>May 08</td><td>Streaming Subscription</td><td class="debit">-$15.99</td></tr>
-<tr><td>May 07</td><td>Transfer From Savings</td><td class="credit">+$250.00</td></tr>
-<tr><td>May 05</td><td>Fuel Purchase</td><td class="debit">-$51.63</td></tr>
-<tr><td>May 03</td><td>Restaurant Payment</td><td class="debit">-$74.29</td></tr>
-<tr><td>May 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
-
-<tr><td>Apr 29</td><td>Grocery Market</td><td class="debit">-$119.38</td></tr>
-<tr><td>Apr 27</td><td>Home Goods Store</td><td class="debit">-$88.40</td></tr>
-<tr><td>Apr 24</td><td>Water Utility</td><td class="debit">-$56.18</td></tr>
-<tr><td>Apr 22</td><td>Online Shopping</td><td class="debit">-$64.93</td></tr>
-<tr><td>Apr 20</td><td>Fuel Purchase</td><td class="debit">-$47.88</td></tr>
-<tr><td>Apr 18</td><td>Restaurant Payment</td><td class="debit">-$62.15</td></tr>
-<tr><td>Apr 16</td><td>Mobile Deposit</td><td class="credit">+$450.00</td></tr>
-<tr><td>Apr 15</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
-<tr><td>Apr 12</td><td>Grocery Market</td><td class="debit">-$141.20</td></tr>
-<tr><td>Apr 10</td><td>ATM Withdrawal</td><td class="debit">-$120.00</td></tr>
-<tr><td>Apr 08</td><td>Streaming Subscription</td><td class="debit">-$15.99</td></tr>
-<tr><td>Apr 05</td><td>Electricity Bill</td><td class="debit">-$134.72</td></tr>
-<tr><td>Apr 03</td><td>Pharmacy Purchase</td><td class="debit">-$31.26</td></tr>
-<tr><td>Apr 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
-
-<tr><td>Mar 30</td><td>Grocery Market</td><td class="debit">-$108.74</td></tr>
-<tr><td>Mar 26</td><td>Transfer To Savings</td><td class="debit">-$350.00</td></tr>
-<tr><td>Mar 24</td><td>Restaurant Payment</td><td class="debit">-$71.30</td></tr>
-<tr><td>Mar 22</td><td>Amazon Marketplace</td><td class="debit">-$56.77</td></tr>
-<tr><td>Mar 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
-<tr><td>Mar 18</td><td>Coffee Shop</td><td class="debit">-$8.15</td></tr>
-<tr><td>Mar 16</td><td>Utility Payment</td><td class="debit">-$139.82</td></tr>
-<tr><td>Mar 15</td><td>Tax Refund Deposit</td><td class="credit">+$1,275.43</td></tr>
-<tr><td>Mar 13</td><td>Grocery Market</td><td class="debit">-$128.44</td></tr>
-<tr><td>Mar 11</td><td>Insurance Premium</td><td class="debit">-$128.44</td></tr>
-<tr><td>Mar 05</td><td>ATM Withdrawal</td><td class="debit">-$80.00</td></tr>
-<tr><td>Mar 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
-
-<tr><td>Feb 27</td><td>Grocery Market</td><td class="debit">-$136.27</td></tr>
-<tr><td>Feb 25</td><td>Home Improvement Store</td><td class="debit">-$92.10</td></tr>
-<tr><td>Feb 23</td><td>Water Utility</td><td class="debit">-$54.11</td></tr>
-<tr><td>Feb 21</td><td>Fuel Purchase</td><td class="debit">-$45.28</td></tr>
-<tr><td>Feb 20</td><td>Mobile Deposit</td><td class="credit">+$300.00</td></tr>
-<tr><td>Feb 18</td><td>Restaurant Payment</td><td class="debit">-$52.40</td></tr>
-<tr><td>Feb 16</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
-<tr><td>Feb 14</td><td>Gift Shop Purchase</td><td class="debit">-$63.55</td></tr>
-<tr><td>Feb 10</td><td>Electricity Bill</td><td class="debit">-$142.83</td></tr>
-<tr><td>Feb 06</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
-<tr><td>Feb 01</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
-
-<tr><td>Jan 30</td><td>Grocery Market</td><td class="debit">-$124.19</td></tr>
-<tr><td>Jan 28</td><td>Fuel Purchase</td><td class="debit">-$48.73</td></tr>
-<tr><td>Jan 26</td><td>Restaurant Payment</td><td class="debit">-$61.42</td></tr>
-<tr><td>Jan 24</td><td>Online Retail Purchase</td><td class="debit">-$95.20</td></tr>
-<tr><td>Jan 22</td><td>Water Utility</td><td class="debit">-$52.88</td></tr>
-<tr><td>Jan 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
-<tr><td>Jan 18</td><td>Pharmacy Purchase</td><td class="debit">-$26.10</td></tr>
-<tr><td>Jan 16</td><td>Internet Service</td><td class="debit">-$79.99</td></tr>
-<tr><td>Jan 14</td><td>Grocery Market</td><td class="debit">-$137.45</td></tr>
-<tr><td>Jan 10</td><td>Electricity Bill</td><td class="debit">-$145.20</td></tr>
-<tr><td>Jan 08</td><td>ATM Withdrawal</td><td class="debit">-$100.00</td></tr>
-<tr><td>Jan 05</td><td>Payroll Deposit</td><td class="credit">+$2,975.00</td></tr>
-<tr><td>Jan 03</td><td>Initial Funding Transfer</td><td class="credit">+$5,000.00</td></tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<div class="footer">
-© 2020NovaTrust Private Banking. All Rights Reserved.
-</div>
+  <div class="footer">© 2020 NovaTrust Private Banking. All Rights Reserved.</div>
 
 </div>
 
 <script>
 const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("keyup", function() {
-
-let filter = searchInput.value.toLowerCase();
-
-let rows = document.querySelectorAll(
-"#transactionTable tbody tr"
-);
-
-rows.forEach(function(row){
-
-let text = row.innerText.toLowerCase();
-
-row.style.display =
-text.includes(filter)
-? ""
-: "none";
-
-});
-
+searchInput.addEventListener("keyup", function(){
+  let filter = searchInput.value.toLowerCase();
+  let rows = document.querySelectorAll("#transactionTable tbody tr");
+  rows.forEach(function(row){
+    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
+  });
 });
 </script>
 
+<script src="js/app.js"></script>
 </body>
 </html>
