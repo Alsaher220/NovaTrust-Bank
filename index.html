@@ -4,121 +4,246 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NovaTrust Digital Bank</title>
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;}
 
 body{
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#0f172a;
+background:#0b0b0b;
+background-image:radial-gradient(ellipse at 60% 20%, rgba(212,175,55,0.08) 0%, transparent 60%);
 }
 
+.login-wrapper{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:24px;
+width:100%;
+max-width:420px;
+padding:20px;
+}
+
+/* LOGO */
+.logo-area{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:8px;
+}
+
+.logo-icon{
+width:64px;
+height:64px;
+}
+
+.logo-name{
+font-size:26px;
+font-weight:700;
+color:#d4af37;
+letter-spacing:1px;
+}
+
+.logo-name span{color:#ffffff;}
+
+.logo-tagline{
+font-size:12px;
+color:#888;
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+/* LOGIN BOX */
 .login-box{
-background:white;
+background:#111111;
 padding:40px;
-width:400px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(0,0,0,.3);
+width:100%;
+border-radius:20px;
+border:1px solid #242424;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
-h1{
+.login-box h2{
 text-align:center;
-color:#1e3a8a;
-margin-bottom:10px;
+color:#d4af37;
+margin-bottom:6px;
+font-size:20px;
+font-weight:600;
 }
 
-p{
+.login-box p{
 text-align:center;
-margin-bottom:25px;
+margin-bottom:28px;
 color:#666;
+font-size:13px;
 }
 
-input{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:8px;
+.input-group{
+position:relative;
+margin-bottom:16px;
 }
 
-button{
+.input-group input{
 width:100%;
-padding:12px;
-background:#1e3a8a;
-color:white;
+padding:14px 16px;
+background:#0f0f0f;
+border:1px solid #2a2a2a;
+border-radius:10px;
+color:#fff;
+font-size:15px;
+transition:border-color 0.3s;
+}
+
+.input-group input:focus{
+outline:none;
+border-color:#d4af37;
+}
+
+.input-group input::placeholder{color:#555;}
+
+button.sign-in{
+width:100%;
+padding:14px;
+background:#d4af37;
+color:#000;
 border:none;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
 font-size:16px;
+font-weight:700;
+letter-spacing:0.5px;
+transition:opacity 0.3s;
+margin-top:6px;
 }
 
-button:hover{
-background:#1d4ed8;
-}
+button.sign-in:hover{opacity:0.88;}
 
-.demo{
+.secure-note{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:6px;
 margin-top:20px;
-font-size:13px;
-background:#f3f4f6;
-padding:10px;
-border-radius:8px;
+font-size:12px;
+color:#555;
+}
+
+.secure-note svg{width:14px;height:14px;fill:#d4af37;}
+
+/* BANK INFO STRIP */
+.bank-info{
+width:100%;
+background:#111;
+border:1px solid #1e1e1e;
+border-radius:14px;
+padding:20px 24px;
+display:flex;
+justify-content:space-around;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.info-item{
+text-align:center;
+}
+
+.info-item .value{
+font-size:16px;
+font-weight:700;
+color:#d4af37;
+}
+
+.info-item .label{
+font-size:11px;
+color:#666;
+margin-top:3px;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="login-box">
+<div class="login-wrapper">
 
-<h1>NovaTrust Bank</h1>
+  <!-- LOGO -->
 
-<p>Secure Online Banking</p>
+  <div class="logo-area">
+    <svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#1a1a1a"/>
+      <path d="M32 10 L52 20 L52 24 L44 24 L44 48 L38 48 L38 24 L26 24 L26 48 L20 48 L20 24 L12 24 L12 20 Z" fill="#d4af37"/>
+      <rect x="12" y="48" width="40" height="4" rx="2" fill="#d4af37"/>
+    </svg>
+    <div class="logo-name">NovaTrust <span>Private</span></div>
+    <div class="logo-tagline">Wealth &amp; Banking</div>
+  </div>
 
-<input type="email" id="email" placeholder="Email">
+  <!-- LOGIN FORM -->
 
-<input type="password" id="password" placeholder="Password">
+  <div class="login-box">
+    <h2>Secure Sign In</h2>
+    <p>Access your private banking portal</p>
 
-<button onclick="login()">Sign In</button>
-
-<div class="demo">
-<b>Demo Account</b><br>
-Email: morganvanessa25@yahoo.com
+```
+<div class="input-group">
+  <input type="email" id="email" placeholder="Email Address" autocomplete="email">
 </div>
+
+<div class="input-group">
+  <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+</div>
+
+<button class="sign-in" onclick="login()">Sign In</button>
+
+<div class="secure-note">
+  <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+  256-bit SSL Encrypted Connection
+</div>
+```
+
+  </div>
+
+  <!-- BANK INFO STRIP -->
+
+  <div class="bank-info">
+    <div class="info-item">
+      <div class="value">FDIC</div>
+      <div class="label">Insured</div>
+    </div>
+    <div class="info-item">
+      <div class="value">$500B+</div>
+      <div class="label">Assets Managed</div>
+    </div>
+    <div class="info-item">
+      <div class="value">24/7</div>
+      <div class="label">Client Support</div>
+    </div>
+    <div class="info-item">
+      <div class="value">Since 2019</div>
+      <div class="label">Trusted Banking</div>
+    </div>
+  </div>
 
 </div>
 
 <script>
-
 function login(){
-
-let email =
-document.getElementById("email").value;
-
-let password =
-document.getElementById("password").value;
-
-if(
-email === "morganvanessa25@yahoo.com"
-&&
-password === "Spiderweb3D"
-){
-window.location.href =
-"dashboard.html";
-}
-else{
-alert("Invalid Login");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  if(email === "morganvanessa25@yahoo.com" && password === "Spiderweb3D"){
+    localStorage.setItem("novatrust_user","Vanessa Morgan");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid credentials. Please try again.");
+  }
 }
 
-}
-
+document.addEventListener("keydown", function(e){
+  if(e.key === "Enter") login();
+});
 </script>
 
 </body>
