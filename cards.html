@@ -3,269 +3,533 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NovaTrust Private Banking - Cards</title>
-
 <link rel="stylesheet" href="css/style.css">
-
 <style>
+
+/* CARD FLIP CONTAINER */
 .cards-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:30px;
 margin-top:20px;
+margin-bottom:40px;
 }
 
-.premium-card{
-background:linear-gradient(135deg,#000,#1a1a1a,#d4af37);
-padding:25px;
-border-radius:20px;
-color:white;
-box-shadow:0 10px 25px rgba(0,0,0,.5);
+.card-flip-wrapper{
+perspective:1000px;
+cursor:pointer;
+height:210px;
+}
+
+.card-flip-inner{
 position:relative;
+width:100%;
+height:100%;
+transform-style:preserve-3d;
+transition:transform 0.6s ease;
+}
+
+.card-flip-wrapper.flipped .card-flip-inner{
+transform:rotateY(180deg);
+}
+
+/* FRONT & BACK SHARED */
+.card-front,
+.card-back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+padding:24px 28px;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
 overflow:hidden;
 }
 
-.premium-card::before{
-content:"";
+/* FRONT */
+.card-front{
+background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 50%,#2a1f00 100%);
+border:1px solid #3a3010;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.card-front::before{
+content:””;
 position:absolute;
-top:-50px;
-right:-50px;
-width:120px;
-height:120px;
-background:rgba(212,175,55,0.2);
+top:-40px;right:-40px;
+width:160px;height:160px;
+background:rgba(212,175,55,0.12);
 border-radius:50%;
 }
 
-.card-number{
-font-family:monospace;
-letter-spacing:3px;
-font-size:18px;
-margin-top:20px;
+.card-front::after{
+content:””;
+position:absolute;
+bottom:-60px;left:-20px;
+width:200px;height:200px;
+background:rgba(212,175,55,0.05);
+border-radius:50%;
 }
 
-.card-actions{
-margin-top:15px;
+.card-top-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1;
+position:relative;
+}
+
+.card-bank-name{
+font-size:13px;
+font-weight:700;
+color:#d4af37;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+.chip{
+width:40px;height:30px;
+background:linear-gradient(135deg,#d4af37,#f0d060,#b8962e);
+border-radius:6px;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:1;
+position:relative;
+}
+
+.chip::before{
+content:””;
+width:26px;height:20px;
+border:1.5px solid rgba(0,0,0,0.3);
+border-radius:3px;
+position:absolute;
+}
+
+.card-number-masked{
+font-family:monospace;
+font-size:20px;
+letter-spacing:4px;
+color:#ffffff;
+z-index:1;
+position:relative;
+text-align:center;
+}
+
+.card-bottom-row{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+z-index:1;
+position:relative;
+}
+
+.card-holder-label{
+font-size:10px;
+color:#999;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:3px;
+}
+
+.card-holder-name{
+font-size:14px;
+font-weight:600;
+color:#fff;
+letter-spacing:1px;
+}
+
+.card-expiry-wrap{text-align:right;}
+
+.card-type-logo{
+font-size:22px;
+font-weight:900;
+font-style:italic;
+color:#d4af37;
+letter-spacing:-1px;
+}
+
+.tap-hint{
+font-size:10px;
+color:#888;
+text-align:center;
+margin-top:8px;
+letter-spacing:1px;
+}
+
+/* BACK */
+.card-back{
+background:linear-gradient(135deg,#111 0%,#1a1a1a 100%);
+border:1px solid #242424;
+transform:rotateY(180deg);
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+}
+
+.mag-strip{
+width:calc(100% + 56px);
+margin-left:-28px;
+height:44px;
+background:#1c1c1c;
+border-top:1px solid #000;
+border-bottom:1px solid #000;
+}
+
+.cvv-row{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.cvv-label{
+font-size:11px;
+color:#888;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.cvv-box{
+background:#f5f0e0;
+color:#000;
+font-family:monospace;
+font-size:16px;
+font-weight:700;
+padding:6px 14px;
+border-radius:6px;
+letter-spacing:3px;
+}
+
+.full-number-row{
+font-family:monospace;
+font-size:17px;
+letter-spacing:3px;
+color:#d4af37;
+text-align:center;
+}
+
+.back-bank{
+font-size:11px;
+color:#555;
+text-align:center;
+letter-spacing:2px;
+}
+
+/* ACTION BUTTONS */
+.card-action-row{
 display:flex;
 gap:10px;
 flex-wrap:wrap;
+margin-top:12px;
 }
 
 .small-btn{
-padding:8px 12px;
+padding:9px 14px;
 border:none;
 border-radius:8px;
 cursor:pointer;
 font-weight:600;
+font-size:13px;
 background:#d4af37;
 color:#000;
+transition:opacity 0.2s;
 }
+
+.small-btn:hover{opacity:0.85;}
 
 .small-btn.secondary{
-background:#333;
+background:#222;
 color:#fff;
+border:1px solid #333;
 }
 
-.status{
-margin-top:10px;
-font-size:14px;
+.card-section-label{
+color:#d4af37;
+font-size:16px;
+font-weight:700;
+margin-bottom:6px;
+margin-top:20px;
+}
+
+.card-status{
+font-size:13px;
 color:#34d399;
+margin-bottom:10px;
+}
+
+/* NOTIFICATION MODAL */
+.modal-overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:9998;
+justify-content:center;
+align-items:center;
+}
+
+.modal-overlay.active{display:flex;}
+
+.modal-box{
+background:#151515;
+border:1px solid #d4af37;
+border-radius:16px;
+padding:30px;
+max-width:360px;
+width:90%;
+text-align:center;
+}
+
+.modal-box h3{color:#d4af37;margin-bottom:10px;}
+.modal-box p{color:#ccc;font-size:14px;margin-bottom:20px;}
+.modal-box button{
+padding:10px 24px;
+background:#d4af37;
+border:none;
+border-radius:8px;
+font-weight:700;
+cursor:pointer;
 }
 </style>
 
 </head>
-
 <body>
 
 <div class="sidebar">
-
-<div class="logo">
-NovaTrust <span>Private</span>
-</div>
-
-<ul>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="accounts.html">Accounts</a></li>
-<li><a href="transactions.html">Transactions</a></li>
-<li><a href="transfer.html">Transfer Funds</a></li>
-<li><a href="cards.html">Premium Cards</a></li>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="index.html">Logout</a></li>
-</ul>
-
+  <div class="logo">
+    <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;">
+      <rect width="64" height="64" rx="14" fill="#1a1a1a"/>
+      <path d="M32 10 L52 20 L52 24 L44 24 L44 48 L38 48 L38 24 L26 24 L26 48 L20 48 L20 24 L12 24 L12 20 Z" fill="#d4af37"/>
+      <rect x="12" y="48" width="40" height="4" rx="2" fill="#d4af37"/>
+    </svg>
+    NovaTrust <span>Private</span>
+  </div>
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="accounts.html">Accounts</a></li>
+    <li><a href="transactions.html">Transactions</a></li>
+    <li><a href="transfer.html">Transfer Funds</a></li>
+    <li><a href="cards.html">Premium Cards</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="index.html">Logout</a></li>
+  </ul>
 </div>
 
 <div class="main">
 
-<div class="header">
+  <div class="header">
+    <div>
+      <h1>Premium Cards</h1>
+      <p>Private Banking Card Management</p>
+    </div>
+    <div class="user-box">Vanessa Morgan</div>
+  </div>
 
+  <p style="color:#888;font-size:13px;margin-bottom:20px;">Tap any card to reveal full details</p>
+
+  <div class="cards-grid">
+
+```
+<!-- CARD 1: Infinite Visa -->
 <div>
-<h1>Premium Cards</h1>
-<p>Private Banking Card Management</p>
+  <div class="card-flip-wrapper" onclick="flipCard(this)">
+    <div class="card-flip-inner">
+      <!-- FRONT -->
+      <div class="card-front">
+        <div class="card-top-row">
+          <div class="card-bank-name">NovaTrust</div>
+          <div class="chip"></div>
+        </div>
+        <div class="card-number-masked">4821 &nbsp; 7634 &nbsp; **** &nbsp; 7845</div>
+        <div class="card-bottom-row">
+          <div>
+            <div class="card-holder-label">Card Holder</div>
+            <div class="card-holder-name">VANESSA MORGAN</div>
+          </div>
+          <div class="card-expiry-wrap">
+            <div class="card-holder-label">Expires</div>
+            <div class="card-holder-name">09/29</div>
+          </div>
+          <div class="card-type-logo">VISA</div>
+        </div>
+      </div>
+      <!-- BACK -->
+      <div class="card-back">
+        <div class="mag-strip"></div>
+        <div class="cvv-row">
+          <span class="cvv-label">CVV</span>
+          <span class="cvv-box">394</span>
+          <span style="color:#777;font-size:12px;">Authorized signature only</span>
+        </div>
+        <div class="full-number-row">4821 &nbsp; 7634 &nbsp; 9120 &nbsp; 7845</div>
+        <div class="back-bank">NOVATRUST PRIVATE BANKING · INFINITE VISA</div>
+      </div>
+    </div>
+  </div>
+  <div class="tap-hint">▼ Tap to flip</div>
+  <div class="card-section-label">NovaTrust Infinite Visa</div>
+  <div class="card-status">● Active &nbsp;·&nbsp; Limit: $150,000</div>
+  <div class="card-action-row">
+    <button class="small-btn" onclick="showModal('freeze')">Freeze Card</button>
+    <button class="small-btn secondary" onclick="showModal('pin')">View PIN</button>
+    <button class="small-btn secondary" onclick="showModal('details')">Details</button>
+  </div>
 </div>
 
-<div class="user-box">
-Vanessa Morgan
+<!-- CARD 2: Platinum Debit -->
+<div>
+  <div class="card-flip-wrapper" onclick="flipCard(this)">
+    <div class="card-flip-inner">
+      <div class="card-front">
+        <div class="card-top-row">
+          <div class="card-bank-name">NovaTrust</div>
+          <div class="chip"></div>
+        </div>
+        <div class="card-number-masked">5304 &nbsp; 8812 &nbsp; **** &nbsp; 4512</div>
+        <div class="card-bottom-row">
+          <div>
+            <div class="card-holder-label">Card Holder</div>
+            <div class="card-holder-name">VANESSA MORGAN</div>
+          </div>
+          <div class="card-expiry-wrap">
+            <div class="card-holder-label">Expires</div>
+            <div class="card-holder-name">03/28</div>
+          </div>
+          <div class="card-type-logo" style="font-style:normal;font-size:14px;font-weight:700;color:#d4af37;">DEBIT</div>
+        </div>
+      </div>
+      <div class="card-back">
+        <div class="mag-strip"></div>
+        <div class="cvv-row">
+          <span class="cvv-label">CVV</span>
+          <span class="cvv-box">712</span>
+          <span style="color:#777;font-size:12px;">Authorized signature only</span>
+        </div>
+        <div class="full-number-row">5304 &nbsp; 8812 &nbsp; 6651 &nbsp; 4512</div>
+        <div class="back-bank">NOVATRUST PRIVATE BANKING · PLATINUM DEBIT</div>
+      </div>
+    </div>
+  </div>
+  <div class="tap-hint">▼ Tap to flip</div>
+  <div class="card-section-label">NovaTrust Platinum Debit</div>
+  <div class="card-status">● Active &nbsp;·&nbsp; Daily Limit: $25,000</div>
+  <div class="card-action-row">
+    <button class="small-btn" onclick="showModal('freeze')">Freeze Card</button>
+    <button class="small-btn secondary" onclick="showModal('pin')">View PIN</button>
+    <button class="small-btn secondary" onclick="showModal('details')">Details</button>
+  </div>
 </div>
 
+<!-- CARD 3: Virtual Wealth Card -->
+<div>
+  <div class="card-flip-wrapper" onclick="flipCard(this)">
+    <div class="card-flip-inner">
+      <div class="card-front" style="background:linear-gradient(135deg,#0a0a1a 0%,#111130 50%,#1a0a2a 100%);border-color:#2a1040;">
+        <div class="card-front::before"></div>
+        <div class="card-top-row">
+          <div class="card-bank-name">NovaTrust</div>
+          <div style="font-size:11px;color:#888;letter-spacing:1px;">VIRTUAL</div>
+        </div>
+        <div class="card-number-masked">4019 &nbsp; 5522 &nbsp; **** &nbsp; 9921</div>
+        <div class="card-bottom-row">
+          <div>
+            <div class="card-holder-label">Card Holder</div>
+            <div class="card-holder-name">VANESSA MORGAN</div>
+          </div>
+          <div class="card-expiry-wrap">
+            <div class="card-holder-label">Expires</div>
+            <div class="card-holder-name">12/27</div>
+          </div>
+          <div class="card-type-logo">VISA</div>
+        </div>
+      </div>
+      <div class="card-back">
+        <div class="mag-strip"></div>
+        <div class="cvv-row">
+          <span class="cvv-label">CVV</span>
+          <span class="cvv-box">856</span>
+          <span style="color:#777;font-size:12px;">Online use only</span>
+        </div>
+        <div class="full-number-row">4019 &nbsp; 5522 &nbsp; 3387 &nbsp; 9921</div>
+        <div class="back-bank">NOVATRUST PRIVATE BANKING · VIRTUAL WEALTH CARD</div>
+      </div>
+    </div>
+  </div>
+  <div class="tap-hint">▼ Tap to flip</div>
+  <div class="card-section-label">Virtual Wealth Card</div>
+  <div class="card-status">● Active Virtual &nbsp;·&nbsp; Online Limit: $10,000</div>
+  <div class="card-action-row">
+    <button class="small-btn" onclick="showModal('deactivate')">Deactivate</button>
+    <button class="small-btn secondary" onclick="showModal('info')">View Info</button>
+    <button class="small-btn secondary" onclick="showModal('security')">Security</button>
+  </div>
 </div>
+```
 
-<div class="cards-grid">
+  </div>
 
-<!-- PRIMARY CARD -->
-<div class="premium-card">
+  <!-- RECENT CARD ACTIVITY -->
 
-<h3>NovaTrust Infinite Visa</h3>
+  <div class="table-container">
+    <h2 style="color:#d4af37;margin-bottom:20px;">Recent Card Activity</h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Merchant</th><th>Card</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>May 29</td><td>Amazon Marketplace</td><td>Infinite Visa</td><td class="debit">-$83.77</td></tr>
+        <tr><td>May 28</td><td>Fuel Station</td><td>Platinum Debit</td><td class="debit">-$46.18</td></tr>
+        <tr><td>May 24</td><td>Restaurant</td><td>Infinite Visa</td><td class="debit">-$58.21</td></tr>
+        <tr><td>May 20</td><td>Mobile Carrier</td><td>Platinum Debit</td><td class="debit">-$85.00</td></tr>
+        <tr><td>May 10</td><td>Insurance</td><td>Infinite Visa</td><td class="debit">-$128.44</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<div class="card-number">
-**** **** **** 7845
-</div>
-
-<p style="margin-top:10px;">
-Card Holder: Vanessa Morgan
-</p>
-
-<p>Limit: $150,000</p>
-
-<div class="status">
-● Active Card
-</div>
-
-<div class="card-actions">
-
-<button class="small-btn">Freeze</button>
-<button class="small-btn secondary">View PIN</button>
-<button class="small-btn secondary">Details</button>
-
-</div>
-
-</div>
-
-<!-- SAVINGS CARD -->
-<div class="premium-card">
-
-<h3>NovaTrust Platinum Debit</h3>
-
-<div class="card-number">
-**** **** **** 4512
-</div>
-
-<p style="margin-top:10px;">
-Card Holder: Vanessa Morgan
-</p>
-
-<p>Daily Limit: $25,000</p>
-
-<div class="status">
-● Active Card
-</div>
-
-<div class="card-actions">
-
-<button class="small-btn">Freeze</button>
-<button class="small-btn secondary">View PIN</button>
-<button class="small-btn secondary">Details</button>
-
-</div>
-
-</div>
-
-<!-- VIRTUAL CARD -->
-<div class="premium-card">
-
-<h3>Virtual Wealth Card</h3>
-
-<div class="card-number">
-**** **** **** 9921
-</div>
-
-<p style="margin-top:10px;">
-Linked to Digital Wallet
-</p>
-
-<p>Online Limit: $10,000</p>
-
-<div class="status">
-● Active Virtual Card
-</div>
-
-<div class="card-actions">
-
-<button class="small-btn">Deactivate</button>
-<button class="small-btn secondary">View Info</button>
-<button class="small-btn secondary">Security</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="table-container">
-
-<h2 style="color:#d4af37;margin-bottom:20px;">
-Recent Card Activity
-</h2>
-
-<table>
-
-<thead>
-<tr>
-<th>Date</th>
-<th>Merchant</th>
-<th>Card</th>
-<th>Amount</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>May 29</td>
-<td>Amazon Marketplace</td>
-<td>Infinite Visa</td>
-<td class="debit">-$83.77</td>
-</tr>
-
-<tr>
-<td>May 28</td>
-<td>Fuel Station</td>
-<td>Platinum Debit</td>
-<td class="debit">-$46.18</td>
-</tr>
-
-<tr>
-<td>May 24</td>
-<td>Restaurant</td>
-<td>Infinite Visa</td>
-<td class="debit">-$58.21</td>
-</tr>
-
-<tr>
-<td>May 20</td>
-<td>Mobile Carrier</td>
-<td>Platinum Debit</td>
-<td class="debit">-$85.00</td>
-</tr>
-
-<tr>
-<td>May 10</td>
-<td>Insurance</td>
-<td>Infinite Visa</td>
-<td class="debit">-$128.44</td>
-</tr>
-
-</tbody>
-
-</table>
+  <div class="footer">© 2020 NovaTrust Private Banking. All Rights Reserved.</div>
 
 </div>
 
-<div class="footer">
-© 2020 NovaTrust Private Banking. All Rights Reserved.
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3 id="modalTitle">Action</h3>
+    <p id="modalBody">Processing your request...</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
 </div>
 
-</div>
+<script>
+function flipCard(wrapper){
+  wrapper.classList.toggle("flipped");
+}
 
+const modalMessages = {
+  freeze: ["Card Freeze", "Your card has been temporarily frozen. No transactions will be authorized until you unfreeze it."],
+  pin: ["PIN Information", "For security, your PIN cannot be displayed here. Please visit a NovaTrust branch or use the mobile app to manage your PIN."],
+  details: ["Card Details", "Full card details are shown on the back of the card. Tap the card to view."],
+  deactivate: ["Deactivate Card", "Your virtual card has been deactivated. Contact your Relationship Manager to issue a new card."],
+  info: ["Card Information", "This virtual card is linked to your primary checking account and is valid for online purchases only."],
+  security: ["Security Settings", "3D Secure authentication is enabled. Transactions above $500 require OTP confirmation."]
+};
+
+function showModal(type){
+  const [title, body] = modalMessages[type] || ["Notice","Action confirmed."];
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalBody").innerText = body;
+  document.getElementById("modalOverlay").classList.add("active");
+}
+
+function closeModal(){
+  document.getElementById("modalOverlay").classList.remove("active");
+}
+</script>
+
+<script src="js/app.js"></script>
 </body>
 </html>
