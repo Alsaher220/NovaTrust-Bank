@@ -3,234 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NovaTrust Private Banking - Dashboard</title>
-
 <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
-
-<div class="logo">
-NovaTrust <span>Private</span>
+  <div class="logo">
+    <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;">
+      <rect width="64" height="64" rx="14" fill="#1a1a1a"/>
+      <path d="M32 10 L52 20 L52 24 L44 24 L44 48 L38 48 L38 24 L26 24 L26 48 L20 48 L20 24 L12 24 L12 20 Z" fill="#d4af37"/>
+      <rect x="12" y="48" width="40" height="4" rx="2" fill="#d4af37"/>
+    </svg>
+    NovaTrust <span>Private</span>
+  </div>
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="accounts.html">Accounts</a></li>
+    <li><a href="transactions.html">Transactions</a></li>
+    <li><a href="transfer.html">Transfer Funds</a></li>
+    <li><a href="cards.html">Premium Cards</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="index.html">Logout</a></li>
+  </ul>
 </div>
-
-<ul>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="accounts.html">Accounts</a></li>
-<li><a href="transactions.html">Transactions</a></li>
-<li><a href="transfer.html">Transfer Funds</a></li>
-<li><a href="cards.html">Premium Cards</a></li>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="index.html">Logout</a></li>
-</ul>
-
-</div>
-
-<!-- MAIN CONTENT -->
 
 <div class="main">
 
-<div class="header">
+  <div class="header">
+    <div>
+      <h1>Welcome, Vanessa Morgan</h1>
+      <p>Private Wealth Client</p>
+    </div>
+    <div class="user-box">Client ID: NT-582914</div>
+  </div>
 
-<div>
-<h1>Welcome, Vanessa Morgan</h1>
-<p>Private Wealth Client</p>
-</div>
+  <!-- ACCOUNT CARDS -->
 
-<div class="user-box">
-Client ID: NT-582914
-</div>
+  <div class="cards">
+    <div class="card">
+      <h3>Checking Account</h3>
+      <h2>$500,000.00</h2>
+    </div>
+    <div class="card">
+      <h3>Savings Account</h3>
+      <h2>$125,000.00</h2>
+    </div>
+    <div class="card">
+      <h3>Total Assets</h3>
+      <h2>$625,000.00</h2>
+    </div>
+    <div class="card">
+      <h3>Monthly Income</h3>
+      <h2>$2,975.00</h2>
+    </div>
+  </div>
 
-</div>
+  <!-- WEALTH SUMMARY -->
 
-<!-- ACCOUNT CARDS -->
+  <div class="cards">
+    <div class="card">
+      <h3>Investment Growth</h3>
+      <h2>+12.4%</h2>
+    </div>
+    <div class="card">
+      <h3>Private Banking Tier</h3>
+      <h2>Gold Elite</h2>
+    </div>
+    <div class="card">
+      <h3>Credit Rating</h3>
+      <h2>815</h2>
+    </div>
+    <div class="card">
+      <h3>Relationship Since</h3>
+      <h2>2019</h2>
+    </div>
+  </div>
 
-<div class="cards">
+  <!-- RECENT TRANSACTIONS -->
 
-<div class="card">
-<h3>Checking Account</h3>
-<h2>$500,000.00</h2>
-</div>
+  <div class="table-container">
+    <h2 style="margin-bottom:20px;color:#d4af37;">Recent Transactions</h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Description</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>May 30</td><td>Direct Deposit - Horizon Consulting</td><td class="credit">+$2,975.00</td></tr>
+        <tr><td>May 29</td><td>Grocery Market</td><td class="debit">-$97.42</td></tr>
+        <tr><td>May 28</td><td>Fuel Purchase</td><td class="debit">-$46.18</td></tr>
+        <tr><td>May 27</td><td>Amazon Marketplace</td><td class="debit">-$83.77</td></tr>
+        <tr><td>May 25</td><td>Transfer To Savings</td><td class="debit">-$400.00</td></tr>
+        <tr><td>May 24</td><td>Restaurant Payment</td><td class="debit">-$58.21</td></tr>
+        <tr><td>May 22</td><td>Pharmacy Purchase</td><td class="debit">-$22.60</td></tr>
+        <tr><td>May 20</td><td>Mobile Carrier Bill</td><td class="debit">-$85.00</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<div class="card">
-<h3>Savings Account</h3>
-<h2>$125,000.00</h2>
-</div>
+  <!-- QUICK ACTIONS -->
 
-<div class="card">
-<h3>Total Assets</h3>
-<h2>$625,000.00</h2>
-</div>
+  <div style="margin-top:30px;" class="cards">
+    <div class="card">
+      <h3>Transfer Funds</h3>
+      <p style="margin-top:10px;">Move money between accounts instantly.</p>
+      <br>
+      <a href="transfer.html"><button class="btn">Transfer</button></a>
+    </div>
+    <div class="card">
+      <h3>View Accounts</h3>
+      <p style="margin-top:10px;">Review checking and savings accounts.</p>
+      <br>
+      <a href="accounts.html"><button class="btn">Accounts</button></a>
+    </div>
+    <div class="card">
+      <h3>Premium Cards</h3>
+      <p style="margin-top:10px;">Manage your private banking cards.</p>
+      <br>
+      <a href="cards.html"><button class="btn">Cards</button></a>
+    </div>
+    <div class="card">
+      <h3>Security Settings</h3>
+      <p style="margin-top:10px;">Manage account security preferences.</p>
+      <br>
+      <a href="settings.html"><button class="btn">Settings</button></a>
+    </div>
+  </div>
 
-<div class="card">
-<h3>Monthly Income</h3>
-<h2>$2,975.00</h2>
-</div>
+  <!-- ABOUT SECTION -->
 
-</div>
+  <div class="about-section">
+    <div class="about-logo">
+      <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="14" fill="#1a1a1a"/>
+        <path d="M32 10 L52 20 L52 24 L44 24 L44 48 L38 48 L38 24 L26 24 L26 48 L20 48 L20 24 L12 24 L12 20 Z" fill="#d4af37"/>
+        <rect x="12" y="48" width="40" height="4" rx="2" fill="#d4af37"/>
+      </svg>
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#d4af37;">NovaTrust Private Banking</div>
+        <div style="font-size:12px;color:#666;letter-spacing:2px;text-transform:uppercase;">Wealth &amp; Banking Excellence</div>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-item">
+        <div class="about-value">FDIC Insured</div>
+        <div class="about-label">Member Institution</div>
+      </div>
+      <div class="about-item">
+        <div class="about-value">$500B+</div>
+        <div class="about-label">Assets Under Management</div>
+      </div>
+      <div class="about-item">
+        <div class="about-value">50+ Countries</div>
+        <div class="about-label">Global Presence</div>
+      </div>
+      <div class="about-item">
+        <div class="about-value">24/7</div>
+        <div class="about-label">Private Client Support</div>
+      </div>
+    </div>
+    <p class="about-text">
+      NovaTrust Private Banking delivers bespoke financial solutions to high-net-worth individuals and families worldwide. 
+      Our Gold Elite clients enjoy exclusive wealth management, priority service, and tailored investment strategies 
+      designed to preserve and grow generational wealth.
+    </p>
+  </div>
 
-<!-- WEALTH SUMMARY -->
-
-<div class="cards">
-
-<div class="card">
-<h3>Investment Growth</h3>
-<h2>+12.4%</h2>
-</div>
-
-<div class="card">
-<h3>Private Banking Tier</h3>
-<h2>Gold Elite</h2>
-</div>
-
-<div class="card">
-<h3>Credit Rating</h3>
-<h2>815</h2>
-</div>
-
-<div class="card">
-<h3>Relationship Since</h3>
-<h2>2019</h2>
-</div>
-
-</div>
-
-<!-- RECENT TRANSACTIONS -->
-
-<div class="table-container">
-
-<h2 style="margin-bottom:20px;color:#d4af37;">
-Recent Transactions
-</h2>
-
-<table>
-
-<thead>
-
-<tr>
-<th>Date</th>
-<th>Description</th>
-<th>Amount</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-<td>May 30</td>
-<td>Direct Deposit - Horizon Consulting</td>
-<td class="credit">+$2,975.00</td>
-</tr>
-
-<tr>
-<td>May 29</td>
-<td>Grocery Market</td>
-<td class="debit">-$97.42</td>
-</tr>
-
-<tr>
-<td>May 28</td>
-<td>Fuel Purchase</td>
-<td class="debit">-$46.18</td>
-</tr>
-
-<tr>
-<td>May 27</td>
-<td>Amazon Marketplace</td>
-<td class="debit">-$83.77</td>
-</tr>
-
-<tr>
-<td>May 25</td>
-<td>Transfer To Savings</td>
-<td class="debit">-$400.00</td>
-</tr>
-
-<tr>
-<td>May 24</td>
-<td>Restaurant Payment</td>
-<td class="debit">-$58.21</td>
-</tr>
-
-<tr>
-<td>May 22</td>
-<td>Pharmacy Purchase</td>
-<td class="debit">-$22.60</td>
-</tr>
-
-<tr>
-<td>May 20</td>
-<td>Mobile Carrier Bill</td>
-<td class="debit">-$85.00</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<!-- QUICK ACTIONS -->
-
-<div style="margin-top:30px;" class="cards">
-
-<div class="card">
-<h3>Transfer Funds</h3>
-<p style="margin-top:10px;">
-Move money between accounts instantly.
-</p>
-<br>
-<a href="transfer.html">
-<button class="btn">Transfer</button>
-</a>
-</div>
-
-<div class="card">
-<h3>View Accounts</h3>
-<p style="margin-top:10px;">
-Review checking and savings accounts.
-</p>
-<br>
-<a href="accounts.html">
-<button class="btn">Accounts</button>
-</a>
-</div>
-
-<div class="card">
-<h3>Premium Cards</h3>
-<p style="margin-top:10px;">
-Manage your private banking cards.
-</p>
-<br>
-<a href="cards.html">
-<button class="btn">Cards</button>
-</a>
-</div>
-
-<div class="card">
-<h3>Security Settings</h3>
-<p style="margin-top:10px;">
-Manage account security preferences.
-</p>
-<br>
-<a href="settings.html">
-<button class="btn">Settings</button>
-</a>
-</div>
+  <div class="footer">© 2020 NovaTrust Private Banking. All Rights Reserved.</div>
 
 </div>
 
-<div class="footer">
-© 2021 NovaTrust Private Banking. All Rights Reserved.
-</div>
-
-</div>
-
+<script src="js/app.js"></script>
 </body>
 </html>
