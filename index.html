@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaTrust Digital Bank</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f172a;
+}
+
+.login-box{
+background:white;
+padding:40px;
+width:400px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+h1{
+text-align:center;
+color:#1e3a8a;
+margin-bottom:10px;
+}
+
+p{
+text-align:center;
+margin-bottom:25px;
+color:#666;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#1e3a8a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.demo{
+margin-top:20px;
+font-size:13px;
+background:#f3f4f6;
+padding:10px;
+border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>NovaTrust Bank</h1>
+
+<p>Secure Online Banking</p>
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Sign In</button>
+
+<div class="demo">
+<b>Demo Account</b><br>
+Email: morganvanessa25@yahoo.com
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+let email =
+document.getElementById("email").value;
+
+let password =
+document.getElementById("password").value;
+
+if(
+email === "morganvanessa25@yahoo.com"
+&&
+password === "Spiderweb3D"
+){
+window.location.href =
+"dashboard.html";
+}
+else{
+alert("Invalid Login");
+}
+
+}
+
+</script>
+
+</body>
+</html>
